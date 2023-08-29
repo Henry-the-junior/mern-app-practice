@@ -61,7 +61,10 @@ const Form = () => {
     for (let value in values) {
       formData.append(value, values[value]);
     }
-    formData.append("picturePath", values.picture.name);
+
+    const imageFileName = values.email.split('@')[0] + "." + values.picture.name.split('.')[1];
+    formData.append("picturePath", imageFileName);
+    formData.set("picture", values["picture"], imageFileName);
 
     const savedUserResponse = await fetch(
       "http://localhost:3001/auth/register",
