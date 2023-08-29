@@ -49,7 +49,7 @@ const Navbar = () => {
       <FlexBetween gap="1.75rem">
         <Typography
           fontWeight="bold"
-          fontSize="clamp(1rem, 2rem, 2.25rem)"
+          fontSize="clamp(1.5rem, 2vw, 2.25rem)" // clamp 是可以達成 RWD 的簡易方式
           color="primary"
           onClick={() => navigate("/home")}
           sx={{
