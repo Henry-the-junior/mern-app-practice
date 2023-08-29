@@ -8,6 +8,22 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 
+// 前端專案用到的技能
+// React
+// Redux
+// Redux Persist
+// React Dropzone
+// Dotenv
+// Formik
+// React Router
+// Material UI
+
+// npm i react-redux @reduxjs/toolkit
+// redux-persist react-dropzone dotenv
+// formik yup react-router-dom@6
+// @mui/material @emotion/react
+// @emotion/styled @mui/icons-material
+
 function App() {
   // 取得設定 theme 所需要的 mode
   const mode = useSelector((state) => state.mode);
