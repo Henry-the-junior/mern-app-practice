@@ -46,7 +46,9 @@ const Navbar = () => {
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
+        {/* the logo part and the search part are together */}
       <FlexBetween gap="1.75rem">
+        {/* start the logo part */}
         <Typography
           fontWeight="bold"
           fontSize="clamp(1.5rem, 2vw, 2.25rem)" 
@@ -62,6 +64,8 @@ const Navbar = () => {
         >
           Sociopedia
         </Typography>
+        {/* end the logo part */}
+        {/* start the search part */}
         {isNonMobileScreens && (
           <FlexBetween
             backgroundColor={neutralLight}
@@ -75,10 +79,12 @@ const Navbar = () => {
             </IconButton>
           </FlexBetween>
         )}
+        {/* end the search part */}
       </FlexBetween>
 
       {/* DESKTOP NAV */}
       {isNonMobileScreens ? (
+        // 若不是 Mobile Screen，顯示長條的選單。
         <FlexBetween gap="2rem">
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
@@ -111,11 +117,14 @@ const Navbar = () => {
               <MenuItem value={fullName}>
                 <Typography>{fullName}</Typography>
               </MenuItem>
-              <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
+              <MenuItem value="Log Out" onClick={() => dispatch(setLogout())}>
+                <Typography>Log Out</Typography>
+              </MenuItem>
             </Select>
           </FormControl>
         </FlexBetween>
       ) : (
+        // 若是 Mobile Screen，只顯示選單按鈕。
         <IconButton
           onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
         >
@@ -125,6 +134,8 @@ const Navbar = () => {
 
       {/* MOBILE NAV */}
       {!isNonMobileScreens && isMobileMenuToggled && (
+        // 若是 Mobile Screen，在 toggle 選單的時候，
+        // 顯示或隱藏右側的選單。
         <Box
           position="fixed"
           right="0"
@@ -187,7 +198,7 @@ const Navbar = () => {
                   <Typography>{fullName}</Typography>
                 </MenuItem>
                 <MenuItem onClick={() => dispatch(setLogout())}>
-                  Log Out
+                  <Typography>Log Out</Typography>
                 </MenuItem>
               </Select>
             </FormControl>
