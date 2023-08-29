@@ -104,3 +104,7 @@ export const themeSettings = (mode) => {
     },
   };
 };
+
+// [MUI5 (Material UI) Crash Course](https://www.youtube.com/watch?v=o1chMISeTC0)
+// [MUI V5: Themes (custom colors + fonts, dark mode, spacings, CSSbaseline)](https://www.youtube.com/watch?v=SUEkAOuQZTQ)
+// [Material-UI Theme Creator](https://bareynol.github.io/mui-theme-creator/)
