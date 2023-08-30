@@ -21,6 +21,11 @@ import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
 
+// 可以用 nodemon start 把 server run 起來
+// npm i express body-parser bcrypt
+// cors gridfs-stream  multer multer-gridfs-storage
+// helmet morgan jsonwebtoken mongoose
+
 /* TEST DATA */
 import User from "./models/User.js";
 import Post from "./models/Post.js";
