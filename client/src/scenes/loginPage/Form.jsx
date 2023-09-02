@@ -62,7 +62,12 @@ const Form = () => {
       formData.append(value, values[value]);
     }
 
-    const imageFileName = values.email.split('@')[0] + "." + values.picture.name.split('.')[1];
+    // 將圖片的檔名改為信箱"@"前的字串
+    // 但這個作法可能不夠合理，假設用同樣的名稱在gmail註冊信箱，
+    // 又在yahoo註冊信箱，那這兩個信箱上傳的圖片檔名就會一樣。
+
+    // 後來改成信箱第一的"."之前的字串全部保留作為圖片檔名。
+    const imageFileName = values.email.split('.')[0] + "." + values.picture.name.split('.')[1];
     formData.append("picturePath", imageFileName);
     formData.set("picture", values["picture"], imageFileName);
 
@@ -279,3 +284,5 @@ export default Form;
 
 // [Formik (React Forms) Crash Course](https://www.youtube.com/watch?v=vJtyp1YmOpc)
 // [React Formik Tutorial with Yup (React Form Validation)](https://www.youtube.com/watch?v=7Ophfq0lEAY)
+// [Using Formik and Material-UI to Build Better Forms in React (Hooks) with Yup Validation](https://www.youtube.com/watch?v=MV9NC3FoCmM)
+// [Upload Files in React - Typescript, Drag and Drop, & Form Examples](https://www.youtube.com/watch?v=8uChP5ivQ1Q)
