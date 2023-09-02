@@ -15,3 +15,5 @@ const UserImage = ({ image, size = "60px" }) => {
 };
 
 export default UserImage;
+
+// [CSS object-fit](https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-fit)

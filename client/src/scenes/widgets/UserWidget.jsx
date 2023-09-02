@@ -32,7 +32,10 @@ const UserWidget = ({ userId, picturePath }) => {
 
   useEffect(() => {
     getUser();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
+  // eslint-disable-line react-hooks/exhaustive-deps
+  // useEffect 的 dependencies 設定為空，
+  // 這部分在重新渲染 dependencies 時，就不會執行這部分的 useEffect。
 
   if (!user) {
     return null;
