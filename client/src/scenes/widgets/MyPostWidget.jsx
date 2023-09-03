@@ -5,7 +5,6 @@ import {
   GifBoxOutlined,
   ImageOutlined,
   MicOutlined,
-  MoreHorizOutlined,
 } from "@mui/icons-material";
 import {
   Box,
@@ -33,7 +32,9 @@ const MyPostWidget = ({ picturePath }) => {
   const { palette } = useTheme();
   const { _id } = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
-  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
+  const isLargeScreens = useMediaQuery("(min-width: 1300px)");
+  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+  const isNonSmallScreens = useMediaQuery("(min-width:700px)");
   const mediumMain = palette.neutral.mediumMain;
   const medium = palette.neutral.medium;
 
@@ -64,7 +65,11 @@ const MyPostWidget = ({ picturePath }) => {
         <InputBase
           placeholder="What's on your mind..."
           onChange={(e) => setPost(e.target.value)}
-          value={post}
+          value={post} 
+          // 一定要有上面這行設定，
+          // 不然 handlePost 之後，
+          // setPost("") 雖然會將 post 變數設定回空字串，
+          // 但畫面並不會清除原先輸入的字串。
           sx={{
             width: "100%",
             backgroundColor: palette.neutral.light,
@@ -122,37 +127,85 @@ const MyPostWidget = ({ picturePath }) => {
 
       <FlexBetween>
         <FlexBetween gap="0.25rem" onClick={() => setIsImage(!isImage)}>
-          <ImageOutlined sx={{ color: mediumMain }} />
-          <Typography
-            color={mediumMain}
-            sx={{ "&:hover": { cursor: "pointer", color: medium } }}
-          >
-            Image
-          </Typography>
+          <ImageOutlined 
+            sx={{ color: mediumMain }}/>
+          { isLargeScreens &&
+            <Typography
+              color={mediumMain}
+              sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+            >
+              Image
+            </Typography>
+          }
+          { !isNonMobileScreens && isNonSmallScreens &&
+            <Typography
+              color={mediumMain}
+              sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+            >
+              Image
+            </Typography>
+          }
         </FlexBetween>
 
-        {isNonMobileScreens ? (
-          <>
-            <FlexBetween gap="0.25rem">
-              <GifBoxOutlined sx={{ color: mediumMain }} />
-              <Typography color={mediumMain}>Clip</Typography>
-            </FlexBetween>
+        <FlexBetween gap="0.25rem">
+          <GifBoxOutlined sx={{ color: mediumMain }} />
+          { isLargeScreens && 
+            <Typography
+              color={mediumMain}
+              sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+            >
+              Clip
+            </Typography>
+          }
+          { !isNonMobileScreens && isNonSmallScreens &&
+            <Typography
+              color={mediumMain}
+              sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+            >
+              Clip
+            </Typography>
+          }
+        </FlexBetween>
 
-            <FlexBetween gap="0.25rem">
-              <AttachFileOutlined sx={{ color: mediumMain }} />
-              <Typography color={mediumMain}>Attachment</Typography>
-            </FlexBetween>
+        <FlexBetween gap="0.25rem">
+          <AttachFileOutlined sx={{ color: mediumMain }} />
+          { isLargeScreens && 
+            <Typography
+              color={mediumMain}
+              sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+            >
+              Attachment
+            </Typography>
+          }
+          { !isNonMobileScreens && isNonSmallScreens &&
+            <Typography
+              color={mediumMain}
+              sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+            >
+              Attachment
+            </Typography>
+          }
+        </FlexBetween>
 
-            <FlexBetween gap="0.25rem">
-              <MicOutlined sx={{ color: mediumMain }} />
-              <Typography color={mediumMain}>Audio</Typography>
-            </FlexBetween>
-          </>
-        ) : (
-          <FlexBetween gap="0.25rem">
-            <MoreHorizOutlined sx={{ color: mediumMain }} />
-          </FlexBetween>
-        )}
+        <FlexBetween gap="0.25rem">
+          <MicOutlined sx={{ color: mediumMain }} />
+          { isLargeScreens && 
+            <Typography
+              color={mediumMain}
+              sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+            >
+              Audio
+            </Typography>
+          }
+          { !isNonMobileScreens && isNonSmallScreens &&
+            <Typography
+              color={mediumMain}
+              sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+            >
+              Audio
+            </Typography>
+          }
+        </FlexBetween>
 
         <Button
           disabled={!post}
