@@ -39,6 +39,11 @@ export const addRemoveFriend = async (req, res) => {
     const user = await User.findById(id);
     const friend = await User.findById(friendId);
 
+    // 不能自己加自己當好友
+    if (id === friendId) {
+      throw new Error("Can not add yourself as a friend!");
+    }
+
     if (user.friends.includes(friendId)) {
       // 如果兩個人有朋友關係，則將彼此從自己的朋友名單中去除。
       user.friends = user.friends.filter((id) => id !== friendId);
