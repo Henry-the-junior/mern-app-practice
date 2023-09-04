@@ -32,6 +32,27 @@ export const getUserFriends = async (req, res) => {
   }
 };
 
+export const searchFriends = async (req, res) => {
+  try {
+    const { searchName } = req.params;
+    const users = await User.find({
+      $or: [
+        { firstName: new RegExp(searchName, "i") },
+        { lastName: new RegExp(searchName, "i") },
+      ],
+    });
+
+    const formattedUsers = users.map(
+      ({ _id, firstName, lastName, occupation, location, picturePath }) => {
+        return { _id, firstName, lastName, occupation, location, picturePath };
+      }
+    );
+    res.status(200).json(formattedUsers);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+
 /* UPDATE */
 export const addRemoveFriend = async (req, res) => {
   try {
