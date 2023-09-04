@@ -40,7 +40,14 @@ const Navbar = () => {
   const alt = theme.palette.background.alt;
 
   const fullName = `${user.firstName} ${user.lastName}`;
-  
+
+  const [searchName, setSearchName] = useState("");
+  const handleSearch = async () => {
+    if (searchName) {
+      navigate(`/searchfriend/${searchName}`);
+    }
+  };
+
   // test fullName
   // const fullName = `Henry Tsai`;
 
@@ -73,9 +80,13 @@ const Navbar = () => {
             gap="3rem"
             padding="0.1rem 1.5rem"
           >
-            <InputBase placeholder="Search..." />
+            <InputBase 
+              placeholder="Search..." 
+              onChange={(e) => setSearchName(e.target.value)}
+              value={searchName}
+            />
             <IconButton>
-              <Search />
+              <Search onClick={handleSearch}/>
             </IconButton>
           </FlexBetween>
         )}
