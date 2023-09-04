@@ -21,7 +21,7 @@ const UsersWidget = ({ searchName }) => {
 
   useEffect(() => {
     searchUsers();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [searchName]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
