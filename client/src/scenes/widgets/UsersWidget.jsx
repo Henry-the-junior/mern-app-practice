@@ -34,7 +34,8 @@ const UsersWidget = ({ searchName }) => {
           location,
           picturePath,
         }) => (
-          <WidgetWrapper m="2rem 0">
+          <WidgetWrapper m="2rem 0" 
+          key={_id}>
             <Friend
               friendId={_id}
               subtitle={occupation}

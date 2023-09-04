@@ -85,8 +85,8 @@ const Navbar = () => {
               onChange={(e) => setSearchName(e.target.value)}
               value={searchName}
             />
-            <IconButton>
-              <Search onClick={handleSearch}/>
+            <IconButton onClick={handleSearch}>
+              <Search/>
             </IconButton>
           </FlexBetween>
         )}
